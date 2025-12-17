@@ -1,6 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+} from 'react';
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
 export const useAuth = () => {
   const context = useContext(AuthContext);
@@ -11,26 +16,37 @@ export const useAuth = () => {
 };
 
 export const AuthProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('jwt_token'));
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [logoutRequested, setLogoutRequested] = useState(false);
 
+  // ✅ SSR-safe: only runs in browser
   useEffect(() => {
-    const token = localStorage.getItem('jwt_token');
-    setIsLoggedIn(!!token);
-  }, [logoutRequested]); // Update when logout is requested
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('jwt_token');
+      setIsLoggedIn(!!token);
+    }
+  }, [logoutRequested]);
 
   const login = () => {
     setIsLoggedIn(true);
   };
 
   const logout = () => {
-    localStorage.removeItem('jwt_token');
+    if (typeof window !== 'undefined') {
+      localStorage.removeItem('jwt_token');
+    }
     setIsLoggedIn(false);
-    setLogoutRequested(prev => !prev); // Toggle to notify all components
+    setLogoutRequested((prev) => !prev);
   };
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout }}>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        login,
+        logout,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
