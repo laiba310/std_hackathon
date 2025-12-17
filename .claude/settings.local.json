@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git fetch:*)",
+      "Bash(.specify/scripts/powershell/create-new-feature.ps1:*)",
+      "Bash(mkdir:*)",
+      "Bash(.specify/scripts/bash/create-phr.sh:*)",
+      "Bash(.specify/scripts/powershell/setup-plan.ps1:*)",
+      "Bash(.specify/scripts/powershell/check-prerequisites.ps1:*)",
+      "Bash(npx docusaurus:*)",
+      "Bash(npm install)",
+      "Bash(powershell.exe -Command:*)",
+      "Bash(del:*)",
+      "Bash(ls:*)",
+      "Bash(git checkout:*)",
+      "Bash(git branch:*)",
+      "Bash(uvicorn:*)",
+      "Bash(npm install:*)",
+      "Bash(python:*)",
+      "Bash(curl:*)",
+      "WebSearch",
+      "SlashCommand(/sp.phr)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

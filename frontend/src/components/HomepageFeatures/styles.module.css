@@ -1,0 +1,373 @@
+/* ===== Variables ===== */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --bg-dark: #0a0a0f;
+  --bg-card: rgba(15, 15, 25, 0.7);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.8);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* ===== Main Section ===== */
+.featuresSection {
+  padding: 8rem 2rem;
+  background: 
+    radial-gradient(ellipse at 50% 0%, rgba(102, 126, 234, 0.08) 0%, transparent 70%),
+    linear-gradient(180deg, var(--bg-dark) 0%, #0f0f1a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.featuresSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.2), 
+    transparent
+  );
+}
+
+/* ===== Section Header ===== */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 6rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sectionTitle {
+  font-size: 3.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.sectionSubtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+/* ===== Features Grid ===== */
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Feature Card ===== */
+.featureCard {
+  position: relative;
+  padding: 3rem 2.5rem;
+  background: var(--bg-card);
+  border-radius: 24px;
+  border: 1px solid var(--border-color);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.featureCard::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(102, 126, 234, 0.1) 0%,
+    rgba(118, 75, 162, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.featureCard:hover {
+  transform: translateY(-8px);
+  border-color: rgba(102, 126, 234, 0.3);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(102, 126, 234, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.featureCard:hover::before {
+  opacity: 1;
+}
+
+/* Card Glow Effect */
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: var(--primary-gradient);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.featureCard:hover .cardGlow {
+  opacity: 0.1;
+}
+
+/* ===== Feature Number ===== */
+.featureNumber {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: rgba(102, 126, 234, 0.8);
+  background: rgba(102, 126, 234, 0.1);
+  padding: 0.5rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover .featureNumber {
+  background: rgba(102, 126, 234, 0.2);
+  color: #fff;
+  transform: scale(1.1);
+}
+
+/* ===== Icon Wrapper ===== */
+.featureIconWrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconBackground {
+  position: absolute;
+  inset: 0;
+  background: var(--primary-gradient);
+  border-radius: 20px;
+  transform: rotate(45deg);
+  opacity: 0.1;
+  transition: all 0.4s ease;
+}
+
+.featureCard:hover .iconBackground {
+  opacity: 0.2;
+  transform: rotate(0deg);
+}
+
+.featureSvg {
+  width: 48px;
+  height: 48px;
+  color: #667eea;
+  filter: drop-shadow(0 4px 12px rgba(102, 126, 234, 0.3));
+  transition: all 0.4s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.featureCard:hover .featureSvg {
+  transform: scale(1.15);
+  color: #764ba2;
+}
+
+/* ===== Feature Content ===== */
+.featureContent {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.featureTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--text-primary);
+  line-height: 1.3;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.featureDescription {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+/* ===== Tags ===== */
+.featureTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.tag {
+  padding: 0.5rem 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover .tag {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.3);
+  color: #667eea;
+}
+
+/* ===== CTA ===== */
+.featureCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #667eea;
+  font-weight: 600;
+  font-size: 1rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover .featureCta {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.ctaArrow {
+  transition: transform 0.3s ease;
+}
+
+.featureCard:hover .ctaArrow {
+  transform: translateX(4px);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1200px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 996px) {
+  .featuresSection {
+    padding: 6rem 1.5rem;
+  }
+  
+  .sectionTitle {
+    font-size: 2.75rem;
+  }
+  
+  .sectionSubtitle {
+    font-size: 1.125rem;
+  }
+  
+  .featuresGrid {
+    gap: 2rem;
+  }
+  
+  .featureCard {
+    padding: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .sectionTitle {
+    font-size: 2.25rem;
+  }
+  
+  .featureIconWrapper {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 2rem;
+  }
+  
+  .featureSvg {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .featureTitle {
+    font-size: 1.5rem;
+  }
+  
+  .featureDescription {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .featuresSection {
+    padding: 4rem 1rem;
+  }
+  
+  .sectionHeader {
+    margin-bottom: 4rem;
+  }
+  
+  .featureCard {
+    padding: 2rem 1.5rem;
+  }
+  
+  .featureIconWrapper {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* ===== Dark Mode Adjustments ===== */
+[data-theme='dark'] .featureCard {
+  background: rgba(10, 10, 15, 0.8);
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .featureCard,
+  .featureSvg,
+  .iconBackground,
+  .featureCta,
+  .tag,
+  .featureNumber {
+    transition: none;
+  }
+  
+  .featureCard:hover {
+    transform: none;
+  }
+}

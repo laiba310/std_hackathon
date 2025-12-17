@@ -1,0 +1,414 @@
+/* ===== Variables - Red Theme ===== */
+:root {
+  --primary-red: #8B0000;
+  --primary-red-light: #B22222;
+  --primary-red-dark: #660000;
+  --accent-red: #FF4444;
+  --bg-dark: #0a0a0a;
+  --bg-card: rgba(20, 0, 0, 0.95);
+  --border-red: rgba(139, 0, 0, 0.3);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+/* ===== Modal Overlay ===== */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== Modal Container ===== */
+.modalContent {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 20px;
+  width: 420px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  border: 1px solid var(--border-red);
+  box-shadow: 
+    0 20px 60px rgba(139, 0, 0, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: modalSlideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalSlideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px) scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+.modalContainer {
+  padding: 32px;
+}
+
+/* ===== Close Button ===== */
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-red);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.closeButton:hover {
+  background: rgba(139, 0, 0, 0.2);
+  border-color: var(--primary-red);
+  color: var(--text-primary);
+  transform: rotate(90deg);
+}
+
+/* ===== Header ===== */
+.modalHeader {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.headerIcon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: bounce 1s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.modalTitle {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 8px 0;
+  background: linear-gradient(135deg, #ffffff 0%, #ff8c8c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modalSubtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ===== Toggle Switch ===== */
+.toggleContainer {
+  display: flex;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 24px;
+  position: relative;
+  border: 1px solid var(--border-red);
+}
+
+.toggleOption {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px;
+  z-index: 2;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.toggleActive {
+  color: var(--text-primary);
+}
+
+.toggleSlider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: calc(50% - 8px);
+  height: calc(100% - 8px);
+  background: linear-gradient(135deg, var(--primary-red), var(--primary-red-light));
+  border-radius: 8px;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(139, 0, 0, 0.3);
+}
+
+.sliderLeft {
+  transform: translateX(0);
+}
+
+.sliderRight {
+  transform: translateX(100%);
+}
+
+/* ===== Error Message ===== */
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: rgba(255, 68, 68, 0.1);
+  border: 1px solid rgba(255, 68, 68, 0.2);
+  border-radius: 10px;
+  color: #ff6b6b;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ===== Form ===== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.formGroup {
+  position: relative;
+}
+
+.inputContainer, .selectContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inputIcon {
+  position: absolute;
+  left: 14px;
+  color: rgba(255, 255, 255, 0.4);
+  transition: color 0.3s ease;
+  pointer-events: none;
+}
+
+.input, .select {
+  width: 100%;
+  padding: 14px 14px 14px 44px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.input:focus, .select:focus {
+  outline: none;
+  border-color: var(--primary-red);
+  background: rgba(139, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgba(139, 0, 0, 0.1);
+}
+
+.input:focus + .inputIcon {
+  color: var(--primary-red-light);
+}
+
+.select {
+  appearance: none;
+  cursor: pointer;
+  padding-right: 40px;
+}
+
+.select option {
+  background: var(--bg-dark);
+  color: var(--text-primary);
+  padding: 12px;
+}
+
+/* ===== Submit Button ===== */
+.submitButton {
+  width: 100%;
+  padding: 16px 24px;
+  background: linear-gradient(135deg, var(--primary-red), var(--primary-red-light));
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(139, 0, 0, 0.3);
+}
+
+.submitButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 8px 30px rgba(139, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submitButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.submitButton:hover::before {
+  left: 100%;
+}
+
+.loading .spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== Footer ===== */
+.modalFooter {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.footerText {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.switchButton {
+  background: none;
+  border: none;
+  color: var(--primary-red-light);
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 6px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.switchButton:hover {
+  color: #ff6b6b;
+  background: rgba(139, 0, 0, 0.1);
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 480px) {
+  .modalContainer {
+    padding: 24px;
+  }
+  
+  .modalTitle {
+    font-size: 1.5rem;
+  }
+  
+  .modalSubtitle {
+    font-size: 0.85rem;
+  }
+  
+  .toggleOption {
+    padding: 10px 14px;
+    font-size: 0.9rem;
+  }
+  
+  .input, .select {
+    padding: 12px 12px 12px 40px;
+    font-size: 0.9rem;
+  }
+  
+  .submitButton {
+    padding: 14px 20px;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===== Dark Theme Support ===== */
+[data-theme='dark'] .modalContent {
+  background: rgba(15, 0, 0, 0.95);
+}
+
+/* ===== Accessibility ===== */
+.input:focus-visible,
+.select:focus-visible,
+.submitButton:focus-visible,
+.toggleOption:focus-visible {
+  outline: 2px solid var(--primary-red);
+  outline-offset: 2px;
+}
+
+/* ===== Loading State ===== */
+.submitButton:disabled {
+  background: linear-gradient(135deg, #666, #888);
+}

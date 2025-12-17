@@ -1,0 +1,558 @@
+/* ===== Variables ===== */
+:root {
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --accent-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --bg-dark: #0a0a0f;
+  --bg-darker: #050508;
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.85);
+  --text-tertiary: rgba(255, 255, 255, 0.6);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --glass-bg: rgba(20, 20, 30, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.15);
+}
+
+/* ===== Main Hero Section ===== */
+.heroBanner {
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-darker);
+  isolation: isolate;
+}
+
+/* ===== Animated Background ===== */
+.animatedBackground {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* Floating Orbs */
+.floatingOrbs {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.floatingOrb {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  filter: blur(20px);
+  opacity: var(--opacity);
+  animation: floatOrb 20s infinite ease-in-out;
+  animation-delay: var(--delay);
+}
+
+.floatingOrb:nth-child(1) {
+  top: 20%;
+  left: 10%;
+  width: var(--size);
+  height: var(--size);
+}
+
+.floatingOrb:nth-child(2) {
+  top: 60%;
+  right: 15%;
+  width: var(--size);
+  height: var(--size);
+}
+
+.floatingOrb:nth-child(3) {
+  bottom: 20%;
+  left: 20%;
+  width: var(--size);
+  height: var(--size);
+}
+
+.floatingOrb:nth-child(4) {
+  top: 30%;
+  right: 25%;
+  width: var(--size);
+  height: var(--size);
+}
+
+.floatingOrb:nth-child(5) {
+  bottom: 40%;
+  left: 35%;
+  width: var(--size);
+  height: var(--size);
+}
+
+/* Grid Lines */
+.gridLines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+}
+
+.gridLine {
+  position: absolute;
+  background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  width: 1px;
+  height: 100%;
+  animation: gridLineScan 3s infinite linear;
+}
+
+.gridLine:nth-child(1) {
+  left: 25%;
+  animation-delay: 0s;
+}
+
+.gridLine:nth-child(2) {
+  left: 50%;
+  animation-delay: 1s;
+}
+
+.gridLine:nth-child(3) {
+  left: 75%;
+  animation-delay: 2s;
+}
+
+/* ===== Hero Content ===== */
+.heroContent {
+  position: relative;
+  z-index: 10;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+/* Badge */
+.badgeContainer {
+  margin-bottom: 2rem;
+}
+
+.heroBadge {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  background: rgba(102, 126, 234, 0.15);
+  border: 1px solid rgba(102, 126, 234, 0.3);
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #667eea;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.heroBadge:hover {
+  background: rgba(102, 126, 234, 0.25);
+  transform: translateY(-2px);
+}
+
+/* Title */
+.hero__title {
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.titleGradient {
+  background: linear-gradient(
+    135deg,
+    #ffffff 0%,
+    #667eea 25%,
+    #764ba2 50%,
+    #ffffff 75%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 3s linear infinite;
+}
+
+/* Subtitle */
+.hero__subtitle {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  max-width: 800px;
+  margin: 0 auto 3rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.highlightText {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+/* Stats */
+.heroStats {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 3rem auto 4rem;
+  padding: 2rem;
+  background: rgba(20, 20, 30, 0.4);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  max-width: 700px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.statNumber {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.statDivider {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.2), transparent);
+}
+
+/* ===== Buttons ===== */
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Primary Button */
+.primaryButton {
+  position: relative;
+  padding: 1.2rem 2.5rem !important;
+  background: var(--primary-gradient) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  box-shadow: 
+    0 10px 30px rgba(102, 126, 234, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset !important;
+}
+
+.primaryButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.primaryButton:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 
+    0 15px 40px rgba(102, 126, 234, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.2) inset !important;
+}
+
+.primaryButton:hover::before {
+  opacity: 1;
+}
+
+/* Secondary Button */
+.secondaryButton {
+  position: relative;
+  padding: 1.2rem 2.5rem !important;
+  background: transparent !important;
+  border: 2px solid rgba(102, 126, 234, 0.4) !important;
+  border-radius: 50px !important;
+  color: white !important;
+  font-weight: 600 !important;
+  font-size: 1.1rem !important;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.8rem !important;
+  backdrop-filter: blur(10px);
+}
+
+.secondaryButton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.secondaryButton:hover {
+  background: rgba(102, 126, 234, 0.1) !important;
+  border-color: rgba(102, 126, 234, 0.6) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2) !important;
+}
+
+.secondaryButton:hover::before {
+  opacity: 1;
+}
+
+/* Button Content */
+.buttonText {
+  position: relative;
+  z-index: 1;
+}
+
+.buttonIcon {
+  transition: transform 0.3s ease;
+}
+
+.primaryButton:hover .buttonIcon {
+  transform: translateX(5px);
+}
+
+.secondaryButton:hover .buttonIcon {
+  transform: translateX(3px);
+}
+
+/* ===== Scroll Indicator ===== */
+.scrollIndicator {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  z-index: 10;
+  opacity: 0.7;
+  animation: fadeInUp 1s ease 1s both;
+}
+
+.mouse {
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  position: relative;
+}
+
+.wheel {
+  width: 4px;
+  height: 8px;
+  background: var(--primary-gradient);
+  border-radius: 2px;
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: scrollWheel 2s infinite;
+}
+
+.scrollText {
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* ===== Animations ===== */
+@keyframes floatOrb {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.1);
+  }
+}
+
+@keyframes gridLineScan {
+  0% {
+    opacity: 0.03;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0.03;
+  }
+}
+
+@keyframes shine {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  to {
+    opacity: 0.7;
+    transform: translate(-50%, 0);
+  }
+}
+
+@keyframes scrollWheel {
+  0% {
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, 20px);
+    opacity: 0;
+  }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1200px) {
+  .heroContent {
+    padding: 3rem 2rem;
+  }
+  
+  .heroStats {
+    max-width: 600px;
+  }
+}
+
+@media (max-width: 996px) {
+  .hero__title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+  }
+  
+  .hero__subtitle {
+    font-size: 1.2rem;
+  }
+  
+  .heroStats {
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .statDivider {
+    width: 100px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  }
+  
+  .statNumber {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroBanner {
+    min-height: 90vh;
+  }
+  
+  .heroContent {
+    padding: 2rem 1.5rem;
+  }
+  
+  .buttons {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+  }
+  
+  .primaryButton,
+  .secondaryButton {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .floatingOrb {
+    filter: blur(15px);
+  }
+}
+
+@media (max-width: 480px) {
+  .heroBanner {
+    min-height: 85vh;
+  }
+  
+  .heroContent {
+    padding: 1.5rem 1rem;
+  }
+  
+  .hero__title {
+    font-size: 2.2rem;
+  }
+  
+  .hero__subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .heroStats {
+    padding: 1.2rem;
+    margin: 2rem auto 3rem;
+  }
+  
+  .scrollIndicator {
+    bottom: 2rem;
+  }
+}
+
+/* ===== Dark Mode Adjustments ===== */
+[data-theme='dark'] .heroBanner {
+  background: #000000;
+}
+
+[data-theme='dark'] .heroStats {
+  background: rgba(10, 10, 15, 0.6);
+}
+
+/* ===== Reduced Motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  .floatingOrb,
+  .gridLine,
+  .scrollIndicator,
+  .mouse,
+  .primaryButton,
+  .secondaryButton {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  .titleGradient {
+    animation: none;
+  }
+  
+  .primaryButton:hover,
+  .secondaryButton:hover {
+    transform: none !important;
+  }
+}

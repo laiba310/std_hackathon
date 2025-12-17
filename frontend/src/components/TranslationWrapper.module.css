@@ -1,0 +1,40 @@
+.goog-te-banner-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Hide the Google Translate gadget (the dropdown itself) */
+.goog-te-gadget {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Adjust body/html top padding that Google Translate often adds */
+body {
+  top: 0px !important;
+}
+
+html {
+  top: 0px !important;
+}
+
+/* Ensure any residual Google Translate styling is removed */
+.skiptranslate {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.goog-tooltip {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.VIpgJd-ZVi9od-ORHb-OEVmCD { /* Specific class for the pop-up */
+  display: none !important;
+  visibility: hidden !important;
+}
+
+.VIpgJd-ZVi9od-aVgCRc { /* Specific class for the pop-up */
+  display: none !important;
+  visibility: hidden !important;
+} 
